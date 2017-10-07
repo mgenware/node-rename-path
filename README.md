@@ -1,4 +1,9 @@
 # node-rename-path
+
+[![Build Status](https://travis-ci.org/mgenware/node-rename-path.svg?branch=master)](http://travis-ci.org/mgenware/node-rename-path)
+[![npm version](https://badge.fury.io/js/node-rename-path.svg)](https://badge.fury.io/js/node-rename-path)
+[![Node.js Version](http://img.shields.io/node/v/node-rename-path.svg)](https://nodejs.org/en/)
+
 Node.js path renaming made easy.
 
 ### Installation
