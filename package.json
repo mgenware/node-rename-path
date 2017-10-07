@@ -1,0 +1,28 @@
+{
+  "name": "node-rename-path",
+  "version": "1.0.0",
+  "description": "Node.js path renaming made easy",
+  "main": "lib/main.js",
+  "author": "Mgen (https://www.mgenware.com)",
+  "homepage": "https://github.com/mgenware/node-rename-path",
+  "bugs": "https://github.com/mgenware/node-rename-path/issues",
+  "keywords": [
+    "path"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgenware/node-rename-path.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}
