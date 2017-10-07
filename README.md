@@ -24,7 +24,7 @@ const PATH = 'documents/work/readme.md';
 
 rename(PATH);
 // Do nothing
-// 'documents/work/readme.md'
+// -> 'documents/work/readme.md'
 
 
 rename(PATH, (pathObj) => {
