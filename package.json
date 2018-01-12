@@ -1,8 +1,9 @@
 {
   "name": "node-rename-path",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Node.js path renaming made easy",
-  "main": "lib/main.js",
+  "main": "dist/lib/main.js",
+  "types": "dist/lib/main.d.ts",
   "author": "Mgen (https://www.mgenware.com)",
   "homepage": "https://github.com/mgenware/node-rename-path",
   "bugs": "https://github.com/mgenware/node-rename-path/issues",
@@ -17,10 +18,24 @@
   "dependencies": {
   },
   "devDependencies": {
-    "mocha": "*"
+    "@types/jest": "^22.0.1",
+    "@types/node": "*",
+    "copyfiles": "*",
+    "jest": "^22.0.4",
+    "tslint": "*",
+    "typescript": "*"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "yarn run clean && yarn run compile && yarn run lint && yarn run copy && yarn run dev_test",
+    "dev_test": "jest",
+    "build": "yarn test",
+    "compile": "tsc",
+    "dev": "yarn run clean && tsc -w",
+    "prepublishOnly": "yarn run test",
+    "lint": "tslint --project tsconfig.json --config tslint.json",
+    "copy": "copyfiles \"tests/data/**/*.*\" \"dist\"",
+    "clean:dist": "rm -rf dist",
+    "clean": "npm run clean:dist"
   },
   "engines": {
     "node": ">=6.0.0"
