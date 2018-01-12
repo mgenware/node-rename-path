@@ -1,6 +1,6 @@
 const rename = require('..').default;
 // or in ES6 style:
-// import rename from 'node-rename-path'
+// import rename from 'node-rename-path';
 
 const PATH = 'documents/work/readme.md';
 let results = '';
