@@ -1,6 +1,6 @@
 {
   "name": "node-rename-path",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Node.js path renaming made easy",
   "main": "dist/lib/main.js",
   "types": "dist/lib/main.d.ts",
@@ -39,5 +39,11 @@
   },
   "engines": {
     "node": ">=6.0.0"
-  }
+  },
+  "files": [
+    "dist/lib",
+    ".gitignore",
+    "README.md",
+    "package.json"
+  ]
 }

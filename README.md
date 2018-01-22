@@ -1,5 +1,6 @@
 # node-rename-path
 
+[![MEAN Module](https://img.shields.io/badge/MEAN%20Module-TypeScript-blue.svg)](https://github.com/mgenware/MEAN-Module)
 [![Build Status](https://travis-ci.org/mgenware/node-rename-path.svg?branch=master)](http://travis-ci.org/mgenware/node-rename-path)
 [![npm version](https://badge.fury.io/js/node-rename-path.svg)](https://badge.fury.io/js/node-rename-path)
 [![Node.js Version](http://img.shields.io/node/v/node-rename-path.svg)](https://nodejs.org/en/)
