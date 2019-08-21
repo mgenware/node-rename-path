@@ -1,6 +1,4 @@
 const rename = require('..').default;
-// or in ES6 style:
-// import rename from 'node-rename-path';
 
 const PATH = 'documents/work/readme.md';
 let results = '';
@@ -10,8 +8,7 @@ results = rename(PATH);
 console.log(results);
 // -> 'documents/work/readme.md'
 
-
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     name: 'day1_' + pathObj.name + '_notes',
   };
@@ -20,7 +17,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/day1_readme_notes.md
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     name: '___',
   };
@@ -29,7 +26,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/___.md
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     ext: '.a.b.c.d',
   };
@@ -38,7 +35,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/readme.a.b.c.d
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     ext: '',
   };
@@ -47,7 +44,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/readme
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     base: 'brand-new.pdf',
   };
@@ -56,7 +53,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/brand-new.pdf
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     dir: '/root',
   };

@@ -1,9 +1,8 @@
 import * as nodepath from 'path';
-import * as localPath from './path';
 
 export default function rename(
   filePath: string,
-  callback?: (pathObj: localPath.ParsedPath) => localPath.FormatInputPathObject,
+  callback?: (pathObj: nodepath.ParsedPath) => nodepath.FormatInputPathObject,
 ): string {
   if (!callback) {
     return filePath;
@@ -11,7 +10,7 @@ export default function rename(
 
   const parsedPath = nodepath.parse(filePath);
   parsedPath.base = '';
-  const inputPathObj: localPath.FormatInputPathObject = {
+  const inputPathObj: nodepath.FormatInputPathObject = {
     ...parsedPath,
     ...callback(parsedPath),
   };

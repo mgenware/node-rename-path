@@ -44,5 +44,10 @@
     ".gitignore",
     "README.md",
     "package.json"
-  ]
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ]
+  }
 }
