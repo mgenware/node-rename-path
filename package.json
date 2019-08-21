@@ -1,6 +1,6 @@
 {
   "name": "node-rename-path",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Node.js path renaming made easy",
   "main": "dist/lib/main.js",
   "types": "dist/lib/main.d.ts",
