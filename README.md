@@ -8,6 +8,7 @@
 Node.js path renaming made easy.
 
 ### Installation
+
 ```sh
 # yarn
 yarn add node-rename-path
@@ -15,19 +16,10 @@ yarn add node-rename-path
 npm install node-rename-path --save
 ```
 
-### Run tests
-```sh
-# yarn
-yarn test
-# npm
-npm test
-```
-
 ## Example
+
 ```javascript
-const rename = require('node-rename-path').default;
-// or in ES6 style:
-// import rename from 'node-rename-path';
+import rename from 'node-rename-path';
 
 const PATH = 'documents/work/readme.md';
 let results = '';
@@ -37,8 +29,7 @@ results = rename(PATH);
 console.log(results);
 // -> 'documents/work/readme.md'
 
-
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     name: 'day1_' + pathObj.name + '_notes',
   };
@@ -47,7 +38,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/day1_readme_notes.md
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     name: '___',
   };
@@ -56,7 +47,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/___.md
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     ext: '.a.b.c.d',
   };
@@ -65,7 +56,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/readme.a.b.c.d
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     ext: '',
   };
@@ -74,7 +65,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/readme
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     base: 'brand-new.pdf',
   };
@@ -83,7 +74,7 @@ results = rename(PATH, (pathObj) => {
 console.log(results);
 // -> documents/work/brand-new.pdf
 
-results = rename(PATH, (pathObj) => {
+results = rename(PATH, pathObj => {
   return {
     dir: '/root',
   };
@@ -91,5 +82,4 @@ results = rename(PATH, (pathObj) => {
 // Set parent path
 console.log(results);
 // -> /root/readme.md
-
 ```
