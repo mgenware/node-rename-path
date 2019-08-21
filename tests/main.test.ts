@@ -1,95 +1,107 @@
 import rename from '../lib/main';
+import * as assert from 'assert';
 
-test('Callback is null', () => {
-  expect(rename('aaaa/bbbb/c')).toBe('aaaa/bbbb/c');
+const expect = assert.equal;
+
+it('Callback is null', () => {
+  expect(rename('aaaa/bbbb/c'), 'aaaa/bbbb/c');
 });
 
-test('Modify name', () => {
+it('Modify name', () => {
   expect(
     rename('aaaa/bbbb/c.a', pathObj => {
       return {
         name: `__${pathObj.name}`,
       };
     }),
-  ).toBe('aaaa/bbbb/__c.a');
+    'aaaa/bbbb/__c.a',
+  );
 });
 
-test('Modify name with dots', () => {
+it('Modify name with dots', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         name: `a.b.c.d`,
       };
     }),
-  ).toBe('aaaa/bbbb/a.b.c.d.a');
+    'aaaa/bbbb/a.b.c.d.a',
+  );
 });
 
-test('Modify ext', () => {
+it('Modify ext', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         ext: '.kk.dd',
       };
     }),
-  ).toBe('aaaa/bbbb/c.kk.dd');
+    'aaaa/bbbb/c.kk.dd',
+  );
 });
 
-test('Modify base', () => {
+it('Modify base', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         base: 'haha',
       };
     }),
-  ).toBe('aaaa/bbbb/haha');
+    'aaaa/bbbb/haha',
+  );
 });
 
-test('Erase name', () => {
+it('Erase name', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         name: '',
       };
     }),
-  ).toBe('aaaa/bbbb/.a');
+    'aaaa/bbbb/.a',
+  );
 });
 
-test('Erase ext', () => {
+it('Erase ext', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         ext: '',
       };
     }),
-  ).toBe('aaaa/bbbb/c');
+    'aaaa/bbbb/c',
+  );
 });
 
-test('Erase all', () => {
+it('Erase all', () => {
   expect(
     rename('aaaa/bbbb/c.a', pathObj => {
       return {
         name: pathObj.ext = '',
       };
     }),
-  ).toBe('aaaa/bbbb/');
+    'aaaa/bbbb/',
+  );
 });
 
-test('Modify dir', () => {
+it('Modify dir', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         dir: 'mydir',
       };
     }),
-  ).toBe('mydir/c.a');
+    'mydir/c.a',
+  );
 });
 
-test('Erase dir', () => {
+it('Erase dir', () => {
   expect(
     rename('aaaa/bbbb/c.a', _ => {
       return {
         dir: '',
       };
     }),
-  ).toBe('c.a');
+    'c.a',
+  );
 });

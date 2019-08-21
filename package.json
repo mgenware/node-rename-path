@@ -17,16 +17,16 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.18",
+    "@types/mocha": "^5.2.7",
     "@types/node": "12.7.2",
     "copyfiles": "2.1.1",
-    "jest": "^24.9.0",
+    "mocha": "^6.2.0",
     "tslint": "5.19.0",
     "typescript": "3.5.3"
   },
   "scripts": {
     "test": "yarn run clean && yarn run compile && yarn run lint && yarn run copy && yarn run dev_test",
-    "dev_test": "jest",
+    "dev_test": "mocha dist/tests/*.js",
     "build": "yarn test",
     "compile": "tsc",
     "dev": "yarn run clean && tsc -w",
@@ -44,10 +44,5 @@
     ".gitignore",
     "README.md",
     "package.json"
-  ],
-  "jest": {
-    "moduleFileExtensions": [
-      "js"
-    ]
-  }
+  ]
 }

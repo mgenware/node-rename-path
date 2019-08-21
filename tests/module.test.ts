@@ -1,13 +1,15 @@
 const main = require('../..').default;
 import * as fs from 'fs';
+import * as assert from 'assert';
+
+const expect = assert.equal;
 
 describe('require this module', () => {
-  test('Verify module members', () => {
-    // TODO: replace "main.add" to one of your module members
-    expect(typeof main).toBe('function');
+  it('Verify module members', () => {
+    expect(typeof main, 'function');
   });
 
-  test('Verify type definition files', () => {
-    expect(fs.statSync('./dist/lib/main.d.ts').isFile()).toBeTruthy();
+  it('Verify type definition files', async () => {
+    expect(await fs.statSync('./dist/lib/main.d.ts').isFile(), true);
   });
 });
