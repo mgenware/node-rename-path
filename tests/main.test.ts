@@ -75,9 +75,10 @@ it('Erase ext', () => {
 
 it('Erase all', () => {
   expect(
-    rename('aaaa/bbbb/c.a', pathObj => {
+    rename('aaaa/bbbb/c.a', _ => {
       return {
-        name: pathObj.ext = '',
+        name: '',
+        ext: '',
       };
     }),
     'aaaa/bbbb/',
