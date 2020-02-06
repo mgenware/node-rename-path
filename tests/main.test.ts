@@ -1,4 +1,4 @@
-import rename from '../lib/main';
+import rename from '../';
 import * as assert from 'assert';
 
 const expect = assert.equal;
