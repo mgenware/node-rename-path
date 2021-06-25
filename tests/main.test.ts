@@ -1,6 +1,11 @@
 /* eslint-disable arrow-body-style */
 import * as assert from 'assert';
+import * as nodepath from 'path';
 import rename from '../dist/main.js';
+
+function p(path: string): string {
+  return path.split('/').join(nodepath.sep);
+}
 
 it('Callback is null', () => {
   assert.strictEqual(rename('aaaa/bbbb/c'), 'aaaa/bbbb/c');
@@ -8,100 +13,100 @@ it('Callback is null', () => {
 
 it('Modify name', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (pathObj) => {
+    rename(p('aaaa/bbbb/c.a'), (pathObj) => {
       return {
         name: `__${pathObj.name}`,
       };
     }),
-    'aaaa/bbbb/__c.a',
+    p('aaaa/bbbb/__c.a'),
   );
 });
 
 it('Modify name with dots', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
-        name: `a.b.c.d`,
+        name: 'a.b.c.d',
       };
     }),
-    'aaaa/bbbb/a.b.c.d.a',
+    p('aaaa/bbbb/a.b.c.d.a'),
   );
 });
 
 it('Modify ext', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         ext: '.kk.dd',
       };
     }),
-    'aaaa/bbbb/c.kk.dd',
+    p('aaaa/bbbb/c.kk.dd'),
   );
 });
 
 it('Modify base', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         base: 'haha',
       };
     }),
-    'aaaa/bbbb/haha',
+    p('aaaa/bbbb/haha'),
   );
 });
 
 it('Erase name', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         name: '',
       };
     }),
-    'aaaa/bbbb/.a',
+    p('aaaa/bbbb/.a'),
   );
 });
 
 it('Erase ext', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         ext: '',
       };
     }),
-    'aaaa/bbbb/c',
+    p('aaaa/bbbb/c'),
   );
 });
 
 it('Erase all', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         name: '',
         ext: '',
       };
     }),
-    'aaaa/bbbb/',
+    p('aaaa/bbbb/'),
   );
 });
 
 it('Modify dir', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         dir: 'mydir',
       };
     }),
-    'mydir/c.a',
+    p('mydir/c.a'),
   );
 });
 
 it('Erase dir', () => {
   assert.strictEqual(
-    rename('aaaa/bbbb/c.a', (_) => {
+    rename(p('aaaa/bbbb/c.a'), (_) => {
       return {
         dir: '',
       };
     }),
-    'c.a',
+    p('c.a'),
   );
 });
