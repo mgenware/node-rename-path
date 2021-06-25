@@ -1,15 +1,14 @@
-import rename from '../';
+/* eslint-disable arrow-body-style */
 import * as assert from 'assert';
-
-const expect = assert.equal;
+import rename from '../dist/main.js';
 
 it('Callback is null', () => {
-  expect(rename('aaaa/bbbb/c'), 'aaaa/bbbb/c');
+  assert.strictEqual(rename('aaaa/bbbb/c'), 'aaaa/bbbb/c');
 });
 
 it('Modify name', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', pathObj => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (pathObj) => {
       return {
         name: `__${pathObj.name}`,
       };
@@ -19,8 +18,8 @@ it('Modify name', () => {
 });
 
 it('Modify name with dots', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         name: `a.b.c.d`,
       };
@@ -30,8 +29,8 @@ it('Modify name with dots', () => {
 });
 
 it('Modify ext', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         ext: '.kk.dd',
       };
@@ -41,8 +40,8 @@ it('Modify ext', () => {
 });
 
 it('Modify base', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         base: 'haha',
       };
@@ -52,8 +51,8 @@ it('Modify base', () => {
 });
 
 it('Erase name', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         name: '',
       };
@@ -63,8 +62,8 @@ it('Erase name', () => {
 });
 
 it('Erase ext', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         ext: '',
       };
@@ -74,8 +73,8 @@ it('Erase ext', () => {
 });
 
 it('Erase all', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         name: '',
         ext: '',
@@ -86,8 +85,8 @@ it('Erase all', () => {
 });
 
 it('Modify dir', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         dir: 'mydir',
       };
@@ -97,8 +96,8 @@ it('Modify dir', () => {
 });
 
 it('Erase dir', () => {
-  expect(
-    rename('aaaa/bbbb/c.a', _ => {
+  assert.strictEqual(
+    rename('aaaa/bbbb/c.a', (_) => {
       return {
         dir: '',
       };
